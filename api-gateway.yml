@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: api-gateway
+
   cloud:
     gateway:
       routes:
@@ -11,15 +12,12 @@ spring:
           uri: lb://RESTAURANT-SERVICE
           predicates:
             - Path=/api/restaurants/**
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-spring:
-  cloud:
-    gateway:
       discovery:
         locator:
           enabled: true
           lowerCaseServiceId: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
