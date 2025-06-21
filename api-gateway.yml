@@ -4,7 +4,13 @@ server:
 spring:
   application:
     name: api-gateway
-
+  cloud:
+    gateway:
+      routes:
+        - id: restaurant-service
+          uri: lb://RESTAURANT-SERVICE
+          predicates:
+            - Path=/api/restaurants/**
 eureka:
   client:
     service-url:
